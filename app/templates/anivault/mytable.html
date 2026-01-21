@@ -1,0 +1,29 @@
+{#
+    first_name 
+    (nickname)
+    student_id
+    sec00x
+#}
+{% for anime in animes %}
+<tr class="anime-row">
+    <td class="col-cover">
+        <img alt="{{ anime.title_english }}" class="anime-cover" src="{{ anime.image_url }}" />
+    </td>
+    <td class="col-title">
+        <span class="anime-title">{{ anime.title_english }}</span>
+        {# TODO: Use a Jinja2 for loop to display genres #}
+
+    </td>
+    <td class="col-year">{{ anime.year }}</td>
+    <td class="col-ep">{{ anime.episodes }}</td>
+    <td class="col-synopsis">
+        {{ anime.synopsis }}
+    </td>
+    <td class="col-rating">
+        <div class="rating-badge">
+            <span class="material-symbols-outlined rating-star">star</span>
+            <span class="rating-val">{{ anime.score }}</span>
+        </div>
+    </td>
+</tr>
+{% endfor %}

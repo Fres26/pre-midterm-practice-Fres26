@@ -1,0 +1,58 @@
+{% extends 'anivault/base.html' %}
+
+{% block title %}AniVault - My List{% endblock %}
+
+{% block content %}
+<!-- My List Header -->
+<section class="list-header-card">
+    <div class="list-header-content">
+        <div class="flex items-center gap-3">
+            <h2 class="font-bold text-slate-800 text-lg">My Anime Collection</h2>
+            <span class="material-symbols-outlined text-primary">bookmark_heart</span>
+        </div>
+    </div>
+</section>
+
+<section class="table-container">
+    <div class="table-scroll-area">
+        <table class="anime-table">
+            <thead>
+                <tr class="table-header-row">
+                    <th class="px-8 py-4 w-24">Cover</th>
+                    <th class="px-8 py-4 w-1/4">Title</th>
+                    <th class="px-8 py-4 w-24 text-center">Year</th>
+                    <th class="px-8 py-4 w-24 text-center">Ep</th>
+                    <th class="px-8 py-4">Synopsis</th>
+                    <th class="px-8 py-4 w-28 text-center">Rating</th>
+                </tr>
+            </thead>
+            <tbody id="anime-table-body" class="divide-y divide-slate-100">
+                <!-- Content loaded via AJAX -->
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<script>
+    async function fetchAnimeList() {
+        try {
+            const response = await fetch('/anivault/list');
+            if (!response.ok) throw new Error('Network response was not ok');
+            const html = await response.text();
+            document.getElementById('anime-table-body').innerHTML = html;
+        } catch (error) {
+            console.error('Error fetching anime list:', error);
+            document.getElementById('anime-table-body').innerHTML = `
+                <tr>
+                    <td colspan="6" class="px-8 py-12 text-center text-slate-500">
+                        Error loading results. Please try again.
+                    </td>
+                </tr>
+            `;
+        }
+    }
+
+    // Initial load
+    document.addEventListener('DOMContentLoaded', fetchAnimeList);
+</script>
+{% endblock %}
