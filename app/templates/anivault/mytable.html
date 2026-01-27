@@ -1,8 +1,8 @@
 {#
-    first_name 
-    (nickname)
-    student_id
-    sec00x
+first_name
+(nickname)
+student_id
+sec00x
 #}
 {% for anime in animes %}
 <tr class="anime-row">
@@ -12,6 +12,14 @@
     <td class="col-title">
         <span class="anime-title">{{ anime.title_english }}</span>
         {# TODO: Use a Jinja2 for loop to display genres #}
+        <div class="flex gap-2 mt-1">
+            {% if anime.genres == [] %}
+                <span class="anime-genre">N/A</span>
+            {% endif %}
+            {% for anime in anime.genres %}
+                <span class="anime-genre">{{ anime }}</span>
+            {% endfor %}
+        </div>
 
     </td>
     <td class="col-year">{{ anime.year }}</td>
