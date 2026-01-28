@@ -37,7 +37,7 @@ def anivault_list_fragment():
 
         for anime in data_json["data"]:
             anime_list.append({
-                "title": anime.get("title_english") or anime.get("title"),
+                "title_english": anime.get("title_english") or anime.get("title"),
                 "image_url": anime.get("images", {}).get("jpg", {}).get("image_url"),
                 "year": anime.get("year"),
                 "episodes": anime.get("episodes"),
