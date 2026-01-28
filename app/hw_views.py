@@ -43,7 +43,6 @@ def anivault_list_fragment():
                 "episodes": anime.get("episodes"),
                 "synopsis": anime.get("synopsis"),
                 "score": anime.get("score"),
-                # ⭐ สำคัญ
                 "genres": [g.get("name") for g in anime.get("genres", [])]
             })
 
