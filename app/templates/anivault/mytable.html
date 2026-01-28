@@ -8,6 +8,7 @@ sec002
 <tr class="anime-row">
     <td class="col-cover">
         <img alt="{{ anime.title_english }}" class="anime-cover" src="{{ anime.image_url }}" />
+        {# alt แสดงเป็นข้อความชื่อtitle ถ้าsrcลิงค์ไม่ขึ้นรูป #}
     </td>
     <td class="col-title">
         <span class="anime-title">{{ anime.title_english }}</span>
@@ -21,7 +22,7 @@ sec002
             {% endfor %}
         </div>
 
-    </td>
+    </td> {# td แสดงการแบ่งcolume #}
     <td class="col-year">{{ anime.year }}</td>
     <td class="col-ep">{{ anime.episodes }}</td>
     <td class="col-synopsis">
@@ -30,7 +31,9 @@ sec002
     <td class="col-rating">
         <div class="rating-badge">
             <span class="material-symbols-outlined rating-star">star</span>
-
+            {#material-symbols-outlined เป็น class ของ Google Material Symbolsบอกเบราว์เซอร์ว่าให้แสดง “ข้อความข้างใน” เป็นไอคอน ไม่ใช่ตัวอักษรธรรมดา#}
+            {#rating-star ดึงมาจากclassในcss #}
+            {#star เขียนบอกว่าเราจะเอารูปอะไร#}
             <span class="rating-val">{{ anime.score }}</span>
         </div>
     </td>
